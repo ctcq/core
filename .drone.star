@@ -2440,7 +2440,7 @@ def runFilesExternalPhpUnitTests():
 			'cd /drone/src',
 			'make',
 			'curl -u admin:admin http://oc-docker-server:8080/ocs/v1.php/cloud/users -d userid="test" -d password="test"',
-			'TEST_PHP_SUITE=apps/files_external/tests/Storage/OwncloudTest.php make test-php-unit'
+			'make test-php-unit TEST_PHP_SUITE=apps/files_external/tests/Storage/OwncloudTest.php'
 		],
 		'depends_on': [],
 		'trigger': {
