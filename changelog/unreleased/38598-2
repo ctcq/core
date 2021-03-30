@@ -1,6 +1,8 @@
 Change: Update PHP dependencies
 
 The following have been updated:
+- doctrine/dbal (2.10.4 => 2.13.0)
 - pear/pear_exception (v1.0.1 => v1.0.2)
 
 https://github.com/owncloud/core/pull/38598
+https://github.com/owncloud/core/pull/38604
