@@ -725,6 +725,10 @@ class UsersTest extends OriginalTest {
 			->expects($this->once())
 			->method('isEnabled')
 			->willReturn('true');
+		$targetUser
+			->expects($this->once())
+			->method('getLastLogin')
+			->willReturn('1618230656');
 
 		$expected = new Result(
 			[
@@ -734,6 +738,7 @@ class UsersTest extends OriginalTest {
 				'displayname' => 'Demo User',
 				'home' => '/var/ocdata/UserToGet',
 				'two_factor_auth_enabled' => 'false',
+				'last_login' => '1618230656'
 			]
 		);
 		$this->assertEquals($expected, $this->api->getUser(['userid' => 'UserToGet']));
@@ -792,6 +797,10 @@ class UsersTest extends OriginalTest {
 			->expects($this->once())
 			->method('isEnabled')
 			->willReturn('true');
+		$targetUser
+			->expects($this->once())
+			->method('getLastLogin')
+			->willReturn('1618230656');
 
 		$expected = new Result(
 			[
@@ -800,7 +809,8 @@ class UsersTest extends OriginalTest {
 				'email' => 'demo@owncloud.org',
 				'home' => '/var/ocdata/UserToGet',
 				'displayname' => 'Demo User',
-				'two_factor_auth_enabled' => 'false'
+				'two_factor_auth_enabled' => 'false',
+				'last_login' => '1618230656'
 			]
 		);
 		$this->assertEquals($expected, $this->api->getUser(['userid' => 'UserToGet']));
@@ -839,6 +849,10 @@ class UsersTest extends OriginalTest {
 			->expects($this->once())
 			->method('getSubAdmin')
 			->will($this->returnValue($subAdminManager));
+		$targetUser
+			->expects($this->once())
+			->method('getLastLogin')
+			->willReturn('1618230656');
 
 		$expected = new Result(null, API::RESPOND_UNAUTHORISED);
 		$this->assertEquals($expected, $this->api->getUser(['userid' => 'UserToGet']));
@@ -893,6 +907,10 @@ class UsersTest extends OriginalTest {
 			->expects($this->once())
 			->method('getEMailAddress')
 			->will($this->returnValue('subadmin@owncloud.org'));
+		$targetUser
+			->expects($this->once())
+			->method('getLastLogin')
+			->willReturn('1618230656');
 
 		$expected = new Result([
 			'quota' => ['DummyValue', 'definition' => null],
@@ -900,6 +918,7 @@ class UsersTest extends OriginalTest {
 			'displayname' => 'Subadmin User',
 			'home' => '/var/ocdata/UserToGet',
 			'two_factor_auth_enabled' => 'false',
+			'last_login' => '1618230656'
 		]);
 		$this->assertEquals($expected, $this->api->getUser(['userid' => 'subadmin']));
 	}
