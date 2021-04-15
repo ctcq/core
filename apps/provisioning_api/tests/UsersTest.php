@@ -849,6 +849,10 @@ class UsersTest extends OriginalTest {
 			->expects($this->once())
 			->method('getSubAdmin')
 			->will($this->returnValue($subAdminManager));
+		$targetUser
+			->expects($this->once())
+			->method('getLastLogin')
+			->willReturn('1618230656');
 
 		$expected = new Result(null, API::RESPOND_UNAUTHORISED);
 		$this->assertEquals($expected, $this->api->getUser(['userid' => 'UserToGet']));
